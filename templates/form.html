@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Complain Form</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Antonio:wght@200&display=swap" rel="stylesheet">
+    <style>
+        body{
+             background-color:whitesmoke;
+             background-image: url('https://drive.google.com/uc?id=1iQWNyRFPj1ELa-yrJyALMSCVKAQD2k8B');
+        background-size:cover ; 
+        background-repeat: repeat;
+        }
+        b{
+            color:rgb(50, 255, 50);
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            margin-left:45% ;
+            
+         }
+        .form{
+            border:px solid red;
+            padding:5% 5% 5% 5%;
+            border-radius: 5%;
+            height:fit-content;
+            width: fit-content;
+            margin-top: 4%;
+            margin-left:27% ;
+            background-color:rgba(255, 255, 255, 0.7) ;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            font-family: 'Antonio', sans-serif;
+        }
+        .div1{
+           padding:4%;
+        }
+        .div2{
+          padding:4%;
+        }
+        .top{
+        width:25%;
+        height:50%;
+        margin-left: 35%;
+        padding:1%;
+        color:white;
+        font-size:6vh;
+        font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        border:7px solid  white;
+        border-radius: 2%;
+        text-align: center;
+      }
+    </style>
+</head>
+
+<body>
+    <div class="top">Detect&Protect</div>
+    <form method="POST" action="/back" enctype="text/plain">
+        <input style="
+        width:fit-content;
+        height:fit-content;
+        box-shadow: rgba(240, 46, 170, 0.4) 5px 5px, rgba(240, 46, 170, 0.3) 10px 10px, rgba(240, 46, 170, 0.2) 15px 15px, rgba(240, 46, 170, 0.1) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px;
+        color:white;
+        font-size: 4vh;
+        margin-left: 5%;
+        margin-top:-6%;
+        background-color: rgba(0, 0, 0, 0);
+        border:none;
+        " type="submit"  value="BACK">
+    </form>
+    <b>{{Status}}</b>
+    <div class="form">
+    <form method="POST" action="/process_data" id="emailForm">
+        <!--<label for="input_value">Enter a value:</label>-->
+        <div class="div1">
+        Your E-mail
+        <br>
+        <input style="margin-top: 1%;" type="email" id="input_value" name="input_value">
+        <span id="emailError" style="color: red;"></span>
+        <br></div>
+        <div class="div2">
+        Complain:(attach the link of image)
+        <br>
+        <textarea style="margin-top:1%;" id="value1" name="value1" rows="4" cols="50" required></textarea>
+        <!--<input type="text" textarea="" id="value1" name="value1">-->
+        <br></div>
+        <input style="border:none; background-color: #5bb423; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;margin-inline-end: 12%;  color:whitesmoke; border-radius: 5%; padding:10px 20px; cursor: pointer;" type="submit" value="Submit">
+    </form></div>
+    <script>
+        function validateForm(event) {
+            event.preventDefault();
+            const email = document.getElementById('input_value').value.trim();
+            const emailError = document.getElementById('emailError');
+            const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+            emailError.textContent = valid ? '' : 'Please enter a valid email address.PLEASE REFERSH';
+            if (valid) document.getElementById('emailForm').submit();
+        }
+
+        document.getElementById('emailForm').addEventListener('submit', validateForm);
+    </script>
+</body>
+</html>
