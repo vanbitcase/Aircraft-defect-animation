@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--<link rel="stylesheet" type="text/css" href="style.css">-->
+    <title>Detect&Protect</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+       body{
+        background-color:#000000;
+        
+        background-image: url('https://drive.google.com/uc?id=1iQWNyRFPj1ELa-yrJyALMSCVKAQD2k8B');
+        background-size:cover ; 
+        background-repeat: repeat;
+    
+       }
+      .form{
+        width:99%;
+        height:50%;
+        margin-top:3%;
+        
+      }
+      .top{
+        width:25%;
+        height:50%;
+        margin-left: 35%;
+        padding:1%;
+        color:white;
+        font-size:6vh;
+        font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        border:7px solid  white;
+        border-radius: 2%;
+        text-align: center;
+      }
+      .upload{
+        width:27%;
+        height:35%;
+        border: 2px dashed white;
+        margin-left: 6%;
+        padding:2%;
+        margin-top:4%;
+        margin-bottom: 2%;
+        text-align: center;
+      }
+      .custom-file-upload {
+    background-color: #5bb423; 
+    color: white; 
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.custom-file-upload:hover {
+    background-color: #449222; 
+}
+.msg{
+    width:30%;
+    height:30%;
+    float:right;
+    
+    text-align: center;
+    margin-right:8%;
+    margin-top:-13%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color:white;
+    border:2px dashed whitesmoke;
+
+    border-radius: 5px solid green;
+    font-size:4vh;
+}
+.preview{
+    display: flex; 
+    border:px solid red;
+    margin-top: 2%;
+    color:brown;
+    }
+
+             
+.div1, .div2 {
+flex: 1; /* Distribute available space equally between the two divs */
+padding: 10px; /* Add padding for spacing */
+background-color: rgb(255, 255, 255);
+border: 1px solid #000;
+border-radius:2%;
+text-align: center;
+}
+.div1{
+    margin-right: px;
+    margin-left:5%;
+}
+.div2{
+    margin-left: 20%;
+    margin-right: 5%;
+}
+.predict{
+    width:35%;
+    height:30%;
+    background-color: grey;
+    float:right;
+    margin-top:40%;
+    text-align: center;
+    padding-top:6%;
+    margin-right:-8%;
+    padding-bottom:6%;
+    border-radius: 2px solid grey;
+
+}
+.button{
+ margin-left:73%;
+   z-index: 1; 
+  border:px solid red;
+  
+    transition: background-color 0.3s ease;
+}
+.button :hover{
+    background-color:#5bb423; 
+}
+.vl {
+    border-left: 6px solid green;
+  height: 500px;
+}
+h{
+    color:greenyellow;
+}
+.chat{
+    float:right;
+    color:white;
+    font-size: 9vh;
+    margin-right: 5%;
+    margin-top:-6%;
+    cursor: pointer;
+    transform: rotateZ(90deg);
+}
+
+
+
+    </style>
+</head>
+<body>
+    <!--<h2>Send POST Request</h2>-->
+
+    <div class="top">Detect&Protect</div>
+    <form method="POST" action="/form" enctype="text/plain">
+    <div class="chat" ><input style="float:right;
+        color:white;
+        font-size: 9vh;
+        margin-right: 5%;
+        margin-top:-6%;
+        background-color: rgba(0, 0, 0, 0);
+        border:none;
+        cursor: pointer;
+        " type="submit"  value="|||"></div></form>
+   
+<div class="form">    
+    <form method="POST"  action="/predict" enctype="multipart/form-data">
+        <div class="upload">
+        <label for="image" ></label>
+        <i style="font-size: 8vh; color:whitesmoke;padding-right:2%;" class="fa fa-upload"></i>
+        <label for="imageselect" class="custom-file-upload">
+            <input style="display: none;" type="file" name="image" id="imageselect" accept=".png, .jpg, .jpeg">
+            UPLOAD
+        </label>
+        <br></div>
+        <div class="button">
+        <input style="border:none; background-color: #5bb423; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;margin-inline-end: 12%;  color:whitesmoke; border-radius: 5%; padding:10px 20px; cursor: pointer;" type="submit" value="PREDICT" id="bt1"></div>
+    </form></div>
+    
+    <div class="msg">
+    <p>Status:<h>{{Success}}<h>
+        <br>
+        <br>
+        
+    </p></div>
+    <div class="preview">
+        <div class="div1">
+        <h3>Preview</h3>
+        <img id="imagePreview" src="" alt="Image Preview" style="max-width: 300px;"></div>
+       <div class="div2">
+		<p> The Uploaded image has :{{text}}</p>
+   <!-- <h3>Prediction Image</h3>
+    <img src="{{ url_for('static', filename=prediction_image_path) }}" alt="Prediction Image"></div>-->
+    </div>
+    
+    
+    <script>
+        const imageInput = document.getElementById('imageselect');
+        const imagePreview = document.getElementById('imagePreview');
+
+        imageInput.addEventListener('change', function() {
+            const file = imageInput.files[0];
+            const imageUrl = URL.createObjectURL(file);
+            imagePreview.src = imageUrl;
+        });
+    </script>
+</body>
+</html>
